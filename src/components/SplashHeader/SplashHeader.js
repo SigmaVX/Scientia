@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import LineBreak from "../UI/LineBreak/LineBreak";
 import styles from "./SplashHeader.module.css";
-import {APP_TITLE} from "../../util/appConstants";
+import { APP_TITLE, INSTRUCTIONS, INSTRUCTIONS_Q } from "../../util/appConstants";
+import { NavLink } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
 
 const SplashHeader = (props) => {
 	const windowSize = window.innerWidth;
@@ -46,9 +48,24 @@ const SplashHeader = (props) => {
 
 	return (
 		<div className={styles.splashWrapper} ref={wrapperDiv}>
-			<h1 className={styles.headerText}>SCIENTIA</h1>
-			<LineBreak width={20} color={"#ff4382"} />
-			<h2 className={styles.subText}>{APP_TITLE}</h2>
+			<Grid container spacing={5} direction="column" justifyContent="center" alignItems="center">
+				<Grid item xs={12}>
+					<div className={styles.topSection}>
+						<h1 className={styles.headerText}>SCIENTIA</h1>
+						<LineBreak width={20} color={"#ff4382"} />
+						<p className={styles.subText}>{APP_TITLE}</p>
+					</div>
+				</Grid>
+				<Grid item xs={12}>
+					<div className={styles.infoWrapper}>
+						<p className={styles.infoText}>{INSTRUCTIONS}</p>
+						<p className={styles.infoText}>{INSTRUCTIONS_Q}</p>
+						<NavLink className={styles.navButton} to={"/game"}>
+							BEGIN
+						</NavLink>
+					</div>
+				</Grid>
+			</Grid>
 		</div>
 	);
 };
