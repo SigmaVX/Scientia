@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ScoreContext } from "./context/ScoreContext";
 import { getRoutes } from "./util/getRoutes";
 import Container from "@material-ui/core/Container";
-import "./App.css";
 
 function App() {
 	const [appState, setAppState] = useState({ questions: [], score: 0 });
@@ -23,12 +22,12 @@ function App() {
 					updateState: safeStateUpdate
 				}}
 			>
-				{/* <Container fixed> */}
 				<main>
-					<p className="srText">Welcome To Scientia - Test Your Knowledge</p>
-					{getRoutes()}
+					<Container maxWidth={"lg"} disableGutters={true}>
+						<p className="srText">Welcome To Scientia - Test Your Knowledge</p>
+						{getRoutes()}
+					</Container>
 				</main>
-				{/* </Container> */}
 			</ScoreContext.Provider>
 		</React.Fragment>
 	);

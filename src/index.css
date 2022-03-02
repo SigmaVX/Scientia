@@ -24,19 +24,10 @@
 	font-family: "Poppins", sans-serif;
 }
 
-html {
-	font-family: "Open Sans", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-body {
-	scroll-behavior: smooth;
-	overflow-x: hidden;
-	background: #0e1538;
-}
-
 main {
+	scroll-behavior: smooth;
+	overflow: hidden;
+	background: #0e1538;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
