@@ -1,0 +1,60 @@
+@keyframes drop {
+	0% {
+		transform: translateY(-50vh);
+		opacity: 0;
+	}
+	20% {
+		transform: translateY(5vh);
+		opacity: 0.1;
+	}
+	40% {
+		transform: translateY(40hv);
+		opacity: 0.75;
+	}
+	50% {
+		transform: translateY(50hv);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(50vh);
+		opacity: 0;
+	}
+}
+
+.headerText {
+	color: #fff;
+	text-align: center;
+	padding-top: 2rem;
+	margin-bottom: 0.5rem;
+	font-weight: 400;
+	font-size: 1.8rem;
+}
+
+.imageWrap {
+	animation: drop linear infinite;
+	position: absolute;
+}
+
+.image {
+	border-radius: 50%;
+	border: 2px solid #fff;
+	zoom: 1.5;
+	overflow: hidden;
+}
+
+.subText {
+	color: #fff;
+	text-align: center;
+	padding-top: 0;
+	margin-top: 0;
+	font-size: 0.9rem;
+}
+
+.splashWrapper {
+	width: 100%;
+	min-height: 80vh;
+	position: relative;
+	background-color: #000;
+	margin: 0;
+	padding: 0;
+}

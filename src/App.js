@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { ScoreContext } from "./context/ScoreContext";
+import { getRoutes } from "./util/getRoutes";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [appState, setAppState] = useState({ questions: [], score: 0 });
+
+	// Method to safely merge state updates
+	const safeStateUpdate = (updateItem) =>{
+		let newState = {...appState, updateItem};
+		setAppState(newState);
+	};
+
+	return (
+		<React.Fragment>
+			<p className="srText">Welcome To Scientia - Test Your Knowledge</p>
+			{/* Used Context But I Normally Avoid This Hook */}
+			<ScoreContext.Provider
+				value={{
+					questions: appState.questions,
+					score: appState.score,
+					updateState: safeStateUpdate
+				}}
+			>
+				<main>{getRoutes()}</main>
+			</ScoreContext.Provider>
+		</React.Fragment>
+	);
 }
 
 export default App;
