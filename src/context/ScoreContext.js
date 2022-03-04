@@ -1,6 +1,7 @@
-import {createContext} from "react";
+import { createContext } from "react";
 
 export const ScoreContext = createContext({
-    questions: [],
-    score: 0
+	questions: [],
+	score: 0,
+	count: 0
 });

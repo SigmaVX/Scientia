@@ -1,13 +1,15 @@
 import React from "react";
 import styles from "./Home.module.css";
-import PropTypes from "prop-types";
 import SplashHeader from "../../components/SplashHeader/SplashHeader";
 
-const Home = (props) => {
+const Home = () => {
+	// This container is mostly empty
+	// While it could be merged with SplashHeader
+	// I like to divide by concerns - logic vs. display
 	return (
-		<div className={styles.homeWrapper}>
+		<section className={styles.homeWrapper}>
 			<SplashHeader />
-		</div>
+		</section>
 	);
 };
 

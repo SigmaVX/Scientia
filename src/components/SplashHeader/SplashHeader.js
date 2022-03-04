@@ -1,32 +1,45 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback, useMemo } from "react";
 import LineBreak from "../UI/LineBreak/LineBreak";
 import styles from "./SplashHeader.module.css";
 import { APP_TITLE, INSTRUCTIONS, INSTRUCTIONS_Q } from "../../util/appConstants";
 import { NavLink } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
-const SplashHeader = (props) => {
+const randomInRange = (min, max) => {
+	return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const SplashHeader = () => {
 	const windowSize = window.innerWidth;
 	const wrapperDiv = useRef(null);
-	const imageOptions = ["https://picsum.photos/id/1025/200/300", "https://picsum.photos/id/1016/200/300", "https://picsum.photos/id/1002/200/300"];
+	const imageOptions = [
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`
+	];
 
-	useEffect(() => {
-		dropPics();
-	}, []);
-
-	const randomInRange = (min, max) => {
-		return Math.floor(Math.random() * (max - min + 1) + min);
-	};
-
-	function dropPics() {
-		let amount = 10;
+	const dropPics = useCallback(() => {
 		let body = wrapperDiv.current;
+		let bodySize = body.offsetWidth;
+		let amount = 10;
+		if (windowSize > 900) {
+			amount = 25;
+		}
 		let i = 0;
 		while (i < amount) {
 			let drop = document.createElement("img");
 			let imgWrap = document.createElement("div");
 			let size = randomInRange(30, 55);
-			let posX = Math.floor(Math.random() * windowSize);
+			let posX = Math.floor(Math.random() * bodySize);
 			let delay = Math.random() * -20;
 			let duration = randomInRange(10, 15);
 			let pickImg = imageOptions[randomInRange(0, imageOptions.length - 1)];
@@ -44,7 +57,11 @@ const SplashHeader = (props) => {
 			body.appendChild(imgWrap);
 			i++;
 		}
-	}
+	}, [windowSize]);
+
+	useEffect(() => {
+		dropPics();
+	}, [dropPics]);
 
 	return (
 		<div className={styles.splashWrapper} ref={wrapperDiv}>

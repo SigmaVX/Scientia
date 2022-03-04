@@ -1,0 +1,47 @@
+{
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "es6": true,
+      "node": true
+    },
+    "globals": { "React": true },
+    "extends": ["plugin:react/recommended", "react-app"],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 13,
+      "sourceType": "module"
+    },
+    "plugins": ["react", "react-hooks"],
+    "rules": {
+      "no-dupe-keys": "error",
+      "no-const-assign": "warn",
+      "no-undef": "warn",
+      "no-unreachable": "warn",
+      "no-unused-vars": "warn",
+      "valid-typeof": "warn",
+      "no-extra-semi": "error",
+      "semi": "warn",
+      "no-trailing-spaces": "warn",
+      "curly": "warn",
+      "arrow-parens": ["error", "always"],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/prop-types": "off",
+      "react/jsx-no-duplicate-props": ["error", { "ignoreCase": false }],
+      "no-use-before-define": ["off", "nofunc"],
+      "comma-dangle": [
+        "warn",
+        {
+          "arrays": "never",
+          "objects": "never",
+          "imports": "never",
+          "exports": "never",
+          "functions": "ignore"
+        }
+      ]
+    }
+  }
+  

@@ -1,0 +1,55 @@
+@keyframes annimate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.box {
+	position: relative;
+	width: 300px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	border-radius: 20px;
+}
+
+.box h3 {
+	color: #fff;
+	font-size: 2rem;
+	position: relative;
+	z-index: 10;
+	margin: 0;
+	text-align: center;
+}
+
+.box::before {
+	content: "";
+	position: absolute;
+	width: 150px;
+	height: 140%;
+	background: linear-gradient(#00ccff, #d400d4);
+	animation: annimate 4s linear infinite;
+}
+
+.box::after {
+	content: "";
+	position: absolute;
+	background: #0e1538;
+	inset: 4px;
+	border-radius: 16px;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 40vw;
+	background: #0e1538;
+}

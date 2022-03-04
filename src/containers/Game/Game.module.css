@@ -1,4 +1,43 @@
+.buttonsWrapper {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.buttonsWrapper button {
+	margin: 1rem;
+}
+
+.buttonsWrapper p {
+	display: block;
+	color: #fff;
+	font-size: 1rem;
+	z-index: 10;
+	text-align: center;
+	padding: 0.6rem 1rem;
+	margin-top: 0;
+}
+
 .gameWrapper {
 	padding: 2rem;
 	margin: 2rem;
+}
+
+.header {
+	text-align: center;
+	font-size: 5rem;
+	color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+	.gameWrapper {
+		padding: 1rem 2rem;
+		margin: 1rem 2rem;
+	}
+	.header {
+		font-size: 3rem;
+		margin-top: 0;
+	}
 }
