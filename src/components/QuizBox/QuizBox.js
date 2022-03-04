@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const QuizBox = (props) => {
 	// Could have used Context But Wanted To Show Use of Props and PropTypes
-	const { question, count } = props;
+	const { question } = props;
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.box}>

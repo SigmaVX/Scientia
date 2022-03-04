@@ -4,11 +4,14 @@ import { getRoutes } from "./util/getRoutes";
 import Container from "@material-ui/core/Container";
 
 function App() {
-	const [appState, setAppState] = useState({ questions: ["What is What when what is upside down?"], score: 0, count: 1 });
+	const [appState, setAppState] = useState({ questions: [], score: 0, count: 1 });
 
 	// Method to safely merge state updates
-	const safeStateUpdate = (updateItem) => {
-		let newState = { ...appState, updateItem };
+	const safeStateUpdate = (updateObject) => {
+		let newState = {
+			...appState,
+			...updateObject
+		};
 		setAppState(newState);
 	};
 

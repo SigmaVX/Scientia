@@ -4,30 +4,24 @@ import PropTypes from "prop-types";
 import "./Button.css";
 
 const Button = (props) => {
-	const { size, inverse, danger, to, href, exact, type, onClick, disabled, id, width } = props;
+	const { size, inverse, alt, danger, to, href, exact, type, onClick, disabled, id, width } = props;
+	let buttonClasses = `button button--${size || "default"} ${inverse && "button--inverse"} ${alt && "button--alt"} ${danger && "button--danger"}`;
 	if (href) {
 		return (
-			<a id={id} className={`button button--${size || "default"} ${inverse && "button--inverse"} ${danger && "button--danger"}`} href={href}>
+			<a id={id} className={buttonClasses} href={href}>
 				{props.children}
 			</a>
 		);
 	}
 	if (to) {
 		return (
-			<Link id={id} to={to} exact={exact} className={`button button--${size || "default"} ${inverse && "button--inverse"} ${danger && "button--danger"}`}>
+			<Link id={id} to={to} exact={exact} className={buttonClasses}>
 				{props.children}
 			</Link>
 		);
 	}
 	return (
-		<button
-			className={`button button--${size || "default"} ${inverse && "button--inverse"} ${danger && "button--danger"}`}
-			type={type}
-			onClick={onClick}
-			disabled={disabled}
-			id={id}
-			style={width && { width: width }}
-		>
+		<button className={buttonClasses} type={type} onClick={onClick} disabled={disabled} id={id} style={width && { width: width }}>
 			{props.children}
 		</button>
 	);
@@ -36,6 +30,7 @@ const Button = (props) => {
 export default Button;
 Button.propTypes = {
 	size: PropTypes.string,
+	alt: PropTypes.bool,
 	inverse: PropTypes.bool,
 	danger: PropTypes.bool,
 	to: PropTypes.string,

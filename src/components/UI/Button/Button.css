@@ -17,7 +17,20 @@
 .button:hover,
 .button:active {
 	background: #00ccff;
+	color: #fff;
+}
+
+.button--alt {
+	background: #d400d4;
+	color: #fff;
+	border: 1px solid #000;
+}
+
+.button--alt:hover,
+.button--alt:active {
 	color: #000;
+	background: #fff;
+	border: 1px solid #d400d4;
 }
 
 .button--inverse {

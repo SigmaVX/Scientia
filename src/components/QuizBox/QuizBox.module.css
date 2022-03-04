@@ -22,11 +22,13 @@
 
 .box h3 {
 	color: #fff;
-	font-size: 2rem;
+	font-size: 1.2rem;
+	padding: 0.5rem;
 	position: relative;
 	z-index: 10;
 	margin: 0;
 	text-align: center;
+	text-transform: capitalize;
 }
 
 .box::before {
@@ -50,6 +52,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-width: 40vw;
+	/* min-width: 40vw; */
 	background: #0e1538;
 }
