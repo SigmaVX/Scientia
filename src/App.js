@@ -27,7 +27,7 @@ function App() {
 				}}
 			>
 				<main>
-					<Container maxWidth={"lg"} disableGutters={true}>
+					<Container maxWidth={"lg"} disableGutters={false}>
 						{/* Accessibility Landmarks and Text For SRs */}
 						<p className="srText">Welcome To Scientia - Test Your Knowledge</p>
 						{getRoutes()}

@@ -24,9 +24,12 @@
 	font-family: "Poppins", sans-serif;
 }
 
+html {
+	overflow: hidden;
+}
+
 main {
 	scroll-behavior: smooth;
-	overflow: hidden;
 	background: #0e1538;
 	box-sizing: border-box;
 	margin: 0;

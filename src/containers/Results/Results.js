@@ -24,7 +24,9 @@ const Results = (props) => {
 					))}
 				</Grid>
 				<Grid item sm={12}>
-					<Button to="/game">Play Again?</Button>
+					<Button id="reset-button" to="/game">
+						Play Again?
+					</Button>
 				</Grid>
 			</Grid>
 		</div>

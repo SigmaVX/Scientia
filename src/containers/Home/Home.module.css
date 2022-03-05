@@ -1,4 +1,5 @@
 .homeWrapper {
 	padding: 2rem;
 	margin: 2rem;
+	overflow: hidden !important;
 }
