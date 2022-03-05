@@ -41,8 +41,7 @@ Button.propTypes = {
 	id: PropTypes.string.isRequired,
 	width: PropTypes.string,
 	onClick: function (props, propName) {
-		if (props["to"] == false && props["href"] == true && (props[propName] === undefined || typeof props[propName] != "function")) {
-			console.log(propName);
+		if (props["to"] === false && props["href"] === true && (props[propName] === undefined || typeof props[propName] != "function")) {
 			return new Error("onClick function is required");
 		}
 	}

@@ -20,6 +20,7 @@ const Game = () => {
 
 	useEffect(() => {
 		getQuestionsHandler();
+		// eslint-disable-next-line
 	}, []);
 
 	const closeHandler = () => {
