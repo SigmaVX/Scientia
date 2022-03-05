@@ -24,8 +24,11 @@
   },
   "eslintConfig": {
     "rules": {
-      "no-use-before-define": ["off", "nofunc"]
-     },
+      "no-use-before-define": [
+        "off",
+        "nofunc"
+      ]
+    },
     "extends": [
       "react-app",
       "react-app/jest"
