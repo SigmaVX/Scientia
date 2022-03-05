@@ -3,6 +3,10 @@
 	margin: 2rem;
 	color: #fff;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: stretch;
 }
 
 .resultsWrapper h2 {
@@ -17,4 +21,20 @@
 	line-height: 3rem;
 	font-weight: 400;
 	margin: 1rem 0 -1rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+	.resultsWrapper {
+		margin: 1.5rem 1rem 1rem 1rem;
+		padding: 0;
+	}
+
+	.resultsWrapper button {
+		margin-top: 1.5rem;
+	}
+
+	.score {
+		font-size: 1.5rem;
+		margin: 0.5rem 0;
+	}
 }

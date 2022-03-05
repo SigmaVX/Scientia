@@ -19,8 +19,8 @@ const Results = () => {
 
 	return (
 		<div className={styles.resultsWrapper}>
+			<h1 className="srText">Resutls Page</h1>
 			<Grid container spacing={3} direction="column" justifyContent="center" alignItems="center">
-				<h1 className="srText">Resutls Page</h1>
 				<Grid item sm={12}>
 					<h2>You Scored</h2>
 					<div className={styles.score}>

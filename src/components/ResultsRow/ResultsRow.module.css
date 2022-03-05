@@ -31,3 +31,23 @@
 .wrong {
 	color: #d400d4;
 }
+
+@media only screen and (max-width: 600px) {
+	.question {
+		font-size: 0.8rem;
+		line-height: 1rem;
+		text-align: center;
+	}
+
+	.result {
+		font-size: 2rem;
+		line-height: 2rem;
+	}
+
+	.wrapper {
+		grid-template-columns: 2.5rem auto;
+		width: 300px;
+		margin: 0.5rem 0.5rem 0.5rem -0.5rem;
+		column-gap: 0;
+	}
+}
