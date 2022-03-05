@@ -1,4 +1,20 @@
 .resultsWrapper {
 	padding: 2rem;
 	margin: 2rem;
+	color: #fff;
+	text-align: center;
+}
+
+.resultsWrapper h2 {
+	margin: 0;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+.score {
+	font-size: 2.5rem;
+	line-height: 3rem;
+	font-weight: 400;
+	margin: 1rem 0 -1rem 0;
 }

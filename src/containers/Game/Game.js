@@ -7,15 +7,15 @@ import Button from "../../components/UI/Button/Button";
 import { useHttpClient } from "../../hooks/httpHook";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-
-//  build handler for answering Q
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Game = () => {
+	const { isLoading, sendRequest } = useHttpClient();
 	const [errorText, setErrorText] = useState("");
 	const scoreData = useContext(ScoreContext);
 	const { count, questions, updateState, score } = scoreData;
 	const currentQ = questions.length === 0 ? "Loading Questions" : questions[count - 1].question;
-	const { isLoading, sendRequest } = useHttpClient();
+	const history = useHistory();
 
 	useEffect(() => {
 		getQuestionsHandler();
@@ -62,72 +62,69 @@ const Game = () => {
 	const answerHandler = (answer) => {
 		let correctAnswer = questions[count - 1].answer;
 		let currentScore = score;
-		let currentCount = count;
 		let currentQuestions = questions;
+		let newCount = count + 1;
 		if (answer === correctAnswer) {
 			currentQuestions[count - 1].result = "+";
-			updateState({
-				score: currentScore++,
-				count: currentCount++,
-				questions: currentQuestions
-			});
+			currentScore++;
 		} else {
 			currentQuestions[count - 1].result = "-";
-			updateState({
-				score: currentScore,
-				count: currentCount++,
-				questions: currentQuestions
-			});
+		}
+		updateState({
+			score: currentScore,
+			count: newCount,
+			questions: currentQuestions
+		});
+		if (newCount === 11) {
+			history.push("/results");
 		}
 	};
 
 	return (
-		<React.Fragment>
-			<div className={styles.gameWrapper}>
-				<Grid container spacing={1} direction="row" justifyContent="center" alignItems="center">
-					<Grid item sm={12}>
-						<h1 className="srText">Quiz Game Page</h1>
-						<h2 className={styles.header}>From API Category</h2>
-					</Grid>
-					<Grid item sm={12} md={6}>
-						<QuizBox question={currentQ} isLoading={isLoading} />
-					</Grid>
-					<Grid item sm={12} md={6}>
-						<Grid container spacing={4} alignItems="stretch" direction="column">
-							<div className={styles.buttonsWrapper}>
-								<Grid item sm={12}>
-									<p>
-										{count} of {questions.length}
-									</p>
-								</Grid>
-								<Grid item sm={12}>
-									<Button id="true-button" size="big" width="200px" onClick={() => answerHandler("true")}>
-										True
-									</Button>
-								</Grid>
-								<Grid item sm={12}>
-									<Button id="false-button" size="big" width="200px" inverse onClick={() => answerHandler("false")}>
-										False
-									</Button>
-								</Grid>
-							</div>
-						</Grid>
+		<div className={styles.gameWrapper}>
+			<Grid container spacing={1} direction="row" justifyContent="center" alignItems="center">
+				<Grid item sm={12}>
+					<h1 className="srText">Quiz Game Page</h1>
+					<h2 className={styles.header}>From API Category</h2>
+				</Grid>
+				<Grid item sm={12} md={6}>
+					<QuizBox question={currentQ} isLoading={isLoading} />
+				</Grid>
+				<Grid item sm={12} md={6}>
+					<Grid container spacing={4} alignItems="stretch" direction="column">
+						<div className={styles.buttonsWrapper}>
+							<Grid item sm={12}>
+								<p>
+									{count} of {questions.length}
+								</p>
+							</Grid>
+							<Grid item sm={12}>
+								<Button id="true-button" size="big" width="200px" onClick={() => answerHandler("true")}>
+									True
+								</Button>
+							</Grid>
+							<Grid item sm={12}>
+								<Button id="false-button" size="big" width="200px" inverse onClick={() => answerHandler("false")}>
+									False
+								</Button>
+							</Grid>
+						</div>
 					</Grid>
 				</Grid>
-				<div className="srText" id="error-modal-helper-text">
-					Error Modal For Trivia Game
-				</div>
-				<Dialog onClose={closeHandler} aria-labelledby="error-modal-helper-text" open={errorText.length > 0}>
-					<div className={styles.modalWrapper}>
-						<DialogTitle id="error-title">Game Error</DialogTitle>
-						<p>{errorText}</p>
-						<Button id="close-error-button" alt onClick={closeHandler}>
-							Close and Reload
-						</Button>
-					</div>
-				</Dialog>
+			</Grid>
+			<div className="srText" id="error-modal-helper-text">
+				Error Modal For Trivia Game
 			</div>
-		</React.Fragment>
+			<Dialog onClose={closeHandler} aria-labelledby="error-modal-helper-text" open={errorText.length > 0}>
+				<div className={styles.modalWrapper}>
+					<DialogTitle id="error-title">Game Error</DialogTitle>
+					<p>{errorText}</p>
+					<Button id="close-error-button" alt onClick={closeHandler}>
+						Close and Reload
+					</Button>
+				</div>
+			</Dialog>
+		</div>
 	);
 };
 
