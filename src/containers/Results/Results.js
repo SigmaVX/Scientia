@@ -4,10 +4,19 @@ import Grid from "@material-ui/core/Grid";
 import Button from "../../components/UI/Button/Button";
 import ResultsRow from "../../components/ResultsRow/ResultsRow";
 import { ScoreContext } from "../../context/ScoreContext";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { DEFAULT_APP_STATE } from "../../util/appConstants";
 
-const Results = (props) => {
+const Results = () => {
 	const scoreData = useContext(ScoreContext);
 	const { count, questions, updateState, score } = scoreData;
+	const history = useHistory();
+
+	const resetHandler = () => {
+		updateState(DEFAULT_APP_STATE);
+		history.push("/game");
+	};
+
 	return (
 		<div className={styles.resultsWrapper}>
 			<Grid container spacing={3} direction="column" justifyContent="center" alignItems="center">
@@ -24,7 +33,7 @@ const Results = (props) => {
 					))}
 				</Grid>
 				<Grid item sm={12}>
-					<Button id="reset-button" to="/game">
+					<Button id="reset-button" onClick={resetHandler}>
 						Play Again?
 					</Button>
 				</Grid>

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { ScoreContext } from "./context/ScoreContext";
 import { getRoutes } from "./util/getRoutes";
 import Container from "@material-ui/core/Container";
+import { DEFAULT_APP_STATE } from "./util/appConstants";
 
 function App() {
-	const [appState, setAppState] = useState({ questions: [], score: 0, count: 1 });
+	const [appState, setAppState] = useState(DEFAULT_APP_STATE);
 
 	// Method to safely merge state updates
 	const safeStateUpdate = (updateObject) => {

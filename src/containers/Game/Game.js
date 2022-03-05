@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import styles from "./Game.module.css";
 import Grid from "@material-ui/core/Grid";
-import { ScoreContext } from "../../context/ScoreContext";
 import QuizBox from "../../components/QuizBox/QuizBox";
 import Button from "../../components/UI/Button/Button";
-import { useHttpClient } from "../../hooks/httpHook";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
+import styles from "./Game.module.css";
+import { ScoreContext } from "../../context/ScoreContext";
+import { useHttpClient } from "../../hooks/httpHook";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Game = () => {
@@ -15,6 +15,7 @@ const Game = () => {
 	const scoreData = useContext(ScoreContext);
 	const { count, questions, updateState, score } = scoreData;
 	const currentQ = questions.length === 0 ? "Loading Questions" : questions[count - 1].question;
+	const currentCategory = questions.length === 0 ? "Loading Category" : questions[count - 1].category;
 	const history = useHistory();
 
 	useEffect(() => {
@@ -49,10 +50,21 @@ const Game = () => {
 		if (rawQs.length === 0) {
 			return [];
 		}
+
+		const cleanString = (htmlStr) => {
+			htmlStr = htmlStr.replace(/&lt;/g, "<");
+			htmlStr = htmlStr.replace(/&gt;/g, ">");
+			htmlStr = htmlStr.replace(/&quot;/g, '"');
+			htmlStr = htmlStr.replace(/&#39;/g, "'");
+			htmlStr = htmlStr.replace(/&#039;/g, "'");
+			htmlStr = htmlStr.replace(/&amp;/g, "&");
+			return htmlStr;
+		};
+
 		const qList = rawQs.map((q) => {
 			return {
 				category: q.category,
-				question: q.question,
+				question: cleanString(q.question),
 				answer: q.correct_answer.toLowerCase()
 			};
 		});
@@ -85,7 +97,7 @@ const Game = () => {
 			<Grid container spacing={1} direction="row" justifyContent="center" alignItems="center">
 				<Grid item sm={12}>
 					<h1 className="srText">Quiz Game Page</h1>
-					<h2 className={styles.header}>From API Category</h2>
+					<h2 className={styles.header}>{currentCategory}</h2>
 				</Grid>
 				<Grid item sm={12} md={6}>
 					<QuizBox question={currentQ} isLoading={isLoading} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, useMemo } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import LineBreak from "../UI/LineBreak/LineBreak";
 import styles from "./SplashHeader.module.css";
 import { APP_TITLE, INSTRUCTIONS, INSTRUCTIONS_Q } from "../../util/appConstants";
@@ -12,19 +12,21 @@ const randomInRange = (min, max) => {
 const SplashHeader = () => {
 	const windowSize = window.innerWidth;
 	const wrapperDiv = useRef(null);
+	const colorOptions = ["#fff", "#00ccff", "#d400d4"];
 	const imageOptions = [
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`,
-		`https://picsum.photos/id/${randomInRange(1000, 1075)}/60/60`
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`,
+		`https://picsum.photos/id/${randomInRange(1031, 1075)}/60/60`
 	];
 
 	const dropPics = useCallback(() => {
@@ -50,6 +52,7 @@ const SplashHeader = () => {
 			imgWrap.style.animationDelay = delay + "s";
 			imgWrap.style.animationDuration = duration + "s";
 			drop.className = styles.image;
+			drop.style.border = `1px solid ${colorOptions[randomInRange(0, 2)]}`;
 			drop.style.width = size + "px";
 			drop.style.height = size + "px";
 			drop.src = pickImg;
